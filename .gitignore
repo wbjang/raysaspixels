@@ -1,0 +1,22 @@
+**/.DS_Store
+*.zip
+*.mov
+
+# Rebuttal / internal notes
+rebuttal_draft.md
+
+# ICML submission artefacts (not for public site)
+14853_Rays_as_Pixels_Learning_.pdf
+Rays_as_Pixels__Learning_A_Joint_Distribution_of_Videos_and_Camera_Trajectories_arxiv_ver_0_*.pdf
+Rays_as_Pixels__Learning_A_Joint_Distribution_of_Videos_and_Camera_Trajectories_ver_0_*.pdf
+
+# LaTeX source
+raysaspixels_arxiv/
+
+# Local screenshots / design files
+Screenshot*.png
+arch.pdf
+arch_VAE_modified.pdf
+view.pdf
+supp_video_rays_as_pixels.mp4
+ablation_videos/

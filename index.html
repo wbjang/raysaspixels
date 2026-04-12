@@ -9,74 +9,84 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 
   <style>
+    :root {
+      --bg: #0a0a0a;
+      --panel: #121212;
+      --text: #e5e5e5;
+      --muted: #8a8a8a;
+      --accent: #1a73e8;
+      --border: #222;
+    }
+    * { box-sizing: border-box; }
     body {
       font-family: 'Noto Sans', sans-serif;
-      background: #0a0a0a;
-      color: #e0e0e0;
+      background: var(--bg);
+      color: var(--text);
       margin: 0;
-    }
-
-    .hero-section {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      padding: 3rem 1.5rem;
-      text-align: center;
-    }
-
-    .hero-section h1 {
-      font-family: 'Google Sans', sans-serif;
-      font-size: 2.4rem;
-      font-weight: 700;
-      color: #f0f0f0;
-      max-width: 800px;
-      line-height: 1.3;
-    }
-
-    .venue {
-      font-family: 'Google Sans', sans-serif;
-      font-size: 1.1rem;
-      font-weight: 500;
-      color: #1a73e8;
-      margin-top: 0.8rem;
-    }
-
-    .authors {
-      font-size: 1rem;
-      color: #aaa;
-      margin-top: 1.5rem;
       line-height: 1.6;
     }
-    .authors a {
-      color: #1a73e8;
-      text-decoration: none;
-    }
-    .authors a:hover {
-      text-decoration: underline;
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
     }
 
-    .coming-soon {
-      margin-top: 2.5rem;
-      padding: 0.6rem 2rem;
-      border: 2px solid #333;
-      border-radius: 30px;
+    /* Hero */
+    .hero-section {
+      text-align: center;
+      padding: 4rem 1.5rem 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-section h1 {
       font-family: 'Google Sans', sans-serif;
-      font-size: 0.95rem;
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #f0f0f0;
+      max-width: 900px;
+      line-height: 1.3;
+      margin: 0 auto;
+    }
+    .venue {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1rem;
       font-weight: 500;
-      color: #666;
-      letter-spacing: 0.05em;
+      color: var(--accent);
+      margin-top: 0.8rem;
+    }
+    .authors {
+      font-size: 1rem;
+      color: #bbb;
+      margin-top: 1.3rem;
+      line-height: 1.7;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .authors a { color: var(--accent); }
+    .affil { font-size: 0.9rem; color: var(--muted); margin-top: 0.3rem; }
+
+    .teaser {
+      max-width: 960px;
+      margin: 2rem auto 0;
+    }
+    .teaser video {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      background: #000;
+      display: block;
     }
 
     .links {
-      margin-top: 2rem;
+      margin-top: 1.8rem;
       display: flex;
-      gap: 1rem;
+      gap: 0.7rem;
       flex-wrap: wrap;
       justify-content: center;
     }
-
     .links a {
       display: inline-flex;
       align-items: center;
@@ -91,18 +101,133 @@
       text-decoration: none;
       transition: background 0.2s;
     }
-    .links a:hover {
-      background: #ddd;
-    }
+    .links a:hover { background: #ddd; text-decoration: none; }
     .links a.disabled {
-      background: #333;
+      background: #2a2a2a;
       pointer-events: none;
       color: #666;
+    }
+
+    /* Sections */
+    section.block {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+    section.block h2 {
+      font-family: 'Google Sans', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #f5f5f5;
+      margin: 0 0 1rem;
+    }
+    section.block p {
+      color: #cfcfcf;
+      font-size: 1rem;
+      max-width: 900px;
+    }
+    .method-name {
+      font-family: 'Google Sans', sans-serif;
+      font-weight: 700;
+      color: #ff8a3d;
+      letter-spacing: 0.01em;
+    }
+    .caption {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 0.6rem;
+      text-align: center;
+    }
+    .caption strong { color: #ff8a3d; font-family: 'Google Sans', sans-serif; }
+    .caption em { color: #f0f0f0; font-style: normal; font-weight: 500; }
+
+    /* Figures */
+    figure.arch {
+      margin: 1.5rem 0 0.5rem;
+      max-width: 900px;
+      text-align: center;
+    }
+    figure.arch img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      background: #fff;
+      padding: 0.5rem;
+    }
+
+    /* Video grids */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 1.2rem;
+    }
+    .video-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+    .video-grid video {
+      width: 100%;
+      height: auto;
+      border-radius: 6px;
+      background: #000;
+      display: block;
+    }
+    @media (max-width: 768px) {
+      .video-grid, .video-grid.cols-3 { grid-template-columns: 1fr; }
+      .hero-section h1 { font-size: 1.6rem; }
+    }
+
+    /* BibTeX */
+    .key-ideas {
+      list-style: none;
+      padding: 0;
+      margin: 1rem 0 0;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+      max-width: 900px;
+    }
+    .key-ideas li {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-left: 3px solid #ff8a3d;
+      border-radius: 6px;
+      padding: 0.9rem 1.1rem;
+      font-size: 0.95rem;
+      color: #dcdcdc;
+    }
+    .key-ideas li strong {
+      display: block;
+      font-family: 'Google Sans', sans-serif;
+      color: #ff8a3d;
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    #methodology p strong {
+      color: #ff8a3d;
+      font-family: 'Google Sans', sans-serif;
+    }
+
+    pre.bibtex {
+      background: #111;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      color: #d5d5d5;
+      font-size: 0.85rem;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      padding: 2rem 1rem 3rem;
     }
   </style>
 </head>
 <body>
 
+<!-- HERO -->
 <div class="hero-section">
   <h1>Rays as Pixels: Learning A Joint Distribution of Videos and Camera Trajectories</h1>
 
@@ -116,17 +241,193 @@
     Juan-Manuel Perez-Rua,
     Yiannis Douratsos,
     Tao Xiang
-    <br>
-    <span style="font-size:0.9rem; color:#777;">Meta AI</span>
+    <div class="affil">Meta AI</div>
+  </div>
+
+  <div class="teaser">
+    <video src="videos/header_teaser.mp4"
+           poster="assets/header_teaser_poster.jpg"
+           preload="auto"
+           autoplay loop muted playsinline></video>
   </div>
 
   <div class="links">
-    <a href="#" class="disabled">arXiv (coming soon)</a>
-    <a href="#" class="disabled">Code (coming soon)</a>
+    <a href="#" class="disabled">arXiv (coming)</a>
+    <a href="assets/paper.pdf" target="_blank">PDF</a>
+    <a href="#bibtex">BibTeX</a>
   </div>
-
-  <div class="coming-soon">Full project page coming soon</div>
 </div>
+
+<div class="container">
+
+  <!-- KEY IDEAS -->
+  <section class="block" id="key-ideas">
+    <h2>Key Ideas</h2>
+    <ul class="key-ideas">
+      <li>
+        <strong>Jointly learning camera trajectories and video generation.</strong>
+        A single video diffusion model predicts camera trajectories from video, and generates videos from one
+        or more input images, optionally along a user-specified trajectory.
+      </li>
+      <li>
+        <strong>Raxels (Rays as Pixels).</strong>
+        Each camera is represented as dense ray pixels and denoised jointly with video frames through
+        decoupled self-cross attention, in a shared latent space.
+      </li>
+      <li>
+        <strong>Self-consistent.</strong>
+        Forward and inverse predictions agree: generate novel views conditioned on the model's own predicted
+        poses, and the closed loop holds.
+      </li>
+    </ul>
+  </section>
+
+  <!-- ABSTRACT -->
+  <section class="block" id="abstract">
+    <h2>Abstract</h2>
+    <p>
+      Recovering camera parameters from images and rendering scenes from novel viewpoints have long been treated
+      as separate tasks in computer vision and graphics. This separation breaks down when image coverage is
+      sparse or poses are ambiguous, since each task needs what the other produces. We propose
+      <span class="method-name">Rays as Pixels</span>, a Video Diffusion Model (VDM) that learns a joint
+      distribution over videos and camera trajectories. We represent each camera as <em>dense ray pixels
+      (raxels)</em> and denoise them jointly with video frames through a <em>Decoupled Self-Cross Attention</em>
+      mechanism. A single trained model handles three tasks: predicting camera trajectories from video, jointly
+      generating video and camera trajectory from input images, and generating video from input images along a
+      target camera trajectory. Because the model can both predict trajectories from a video and generate views
+      conditioned on its own predictions, we evaluate it through a closed-loop self-consistency test,
+      demonstrating that its forward and inverse predictions agree. Notably, trajectory prediction requires far
+      fewer denoising steps than video generation &mdash; even a few denoising steps suffice for
+      self-consistency. We report results on pose estimation and camera-controlled video generation.
+    </p>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="block" id="overview">
+    <h2>Overview</h2>
+    <p>
+      At training time, input images, videos, and their ray (raxel) images are encoded by a frozen VAE and
+      concatenated along the token axis as source latents, sparse target latents, and video target latents.
+      We add noise and denoise the joint sequence with a DiT backbone that uses a
+      <em>decoupled self-cross attention</em> block. At inference time, the same model supports three modes
+      depending on which latents are given vs. noised: (i) input image &rarr; video &#43; camera motion,
+      (ii) input images &#43; camera motion &rarr; video, and (iii) input video &rarr; camera motion.
+      For more detail, please reference the <a href="assets/paper.pdf" target="_blank">paper</a>.
+    </p>
+    <figure class="arch">
+      <img src="assets/arch.png" alt="Rays as Pixels architecture overview">
+      <div class="caption">
+        Training and inference setup. Video latents and ray (raxel) latents are jointly denoised by a single
+        DiT with decoupled self-cross attention.
+      </div>
+    </figure>
+  </section>
+
+
+  <!-- SECTION 1: POSE PREDICTION -->
+  <section class="block" id="pose">
+    <h2>1. Camera Pose Prediction</h2>
+    <p>
+      Given an input video, our model estimates the dense camera trajectory by denoising the ray latents
+      conditioned on the fixed video latents. We then recover camera parameters from the predicted raxels via
+      closed-form orthogonal Procrustes. Below, each clip visualises the input video alongside the
+      reconstructed camera trajectory.
+    </p>
+    <p class="caption" style="text-align:left; max-width:900px;">
+      <strong>Layout of each clip &mdash;</strong>
+      <em>Left:</em> the input video.
+      <em>Middle:</em> the predicted raxel (top) and the ground-truth raxel (bottom).
+      <em>Right:</em> our camera visualisation compared against ground truth (COLMAP). Since COLMAP does not
+      recover metric scale, we align its scale to our predicted camera locations.
+    </p>
+    <div class="video-grid">
+      <video src="videos/pose_prediction_videos/clip_0002_camera_trajectory.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/pose_prediction_videos/clip_0004_camera_trajectory.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/pose_prediction_videos/clip_0043_camera_trajectory.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/pose_prediction_videos/clip_0050_camera_trajectory.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/pose_prediction_videos/clip_0091_camera_trajectory.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/pose_prediction_videos/clip_0093_camera_trajectory.mp4" preload="metadata" autoplay loop muted playsinline></video>
+    </div>
+  </section>
+
+  <!-- SECTION 2: SINGLE IMAGE VIDEO GENERATION -->
+  <section class="block" id="single-image">
+    <h2>2. Single-Image Video Generation</h2>
+    <p>
+      Starting from a single input image, our model jointly samples a plausible camera trajectory and the
+      corresponding video. This enables generation of scenes with large viewpoint changes where, unlike
+      image-to-video baselines that hallucinate camera motion implicitly, the motion is explicitly represented
+      and editable. We compare against one of the best approaches, Kaleido, on DL3DV-140 test scenes.
+    </p>
+    <div class="video-grid">
+      <video src="videos/comparison_with_kaleido/clip_0022_2.0_0.0_24_tag1024_medium_v3_seed_12345-9818.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/comparison_with_kaleido/clip_0036_2.0_0.0_24_tag1024_medium_v3_seed_12345-9822.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/comparison_with_kaleido/clip_0050_2.0_0.0_24_tag1024_medium_v3_seed_12345.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/comparison_with_kaleido/clip_0057_2.0_0.0_24_tag1024_medium_v3_seed_12345-9826.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/comparison_with_kaleido/clip_0074_2.0_0.0_24_tag1024_medium_v3_seed_12345-9830.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/comparison_with_kaleido/clip_0119_2.0_0.0_24_tag1024_medium_v3_seed_12345-9834.mp4" preload="metadata" autoplay loop muted playsinline></video>
+    </div>
+  </section>
+
+  <!-- SECTION 3: CAMERA-CONTROLLED VIDEO GENERATION -->
+  <section class="block" id="camera-controlled">
+    <h2>3. Camera-Controlled Video Generation</h2>
+    <p>
+      Given an input image and a user-specified camera trajectory, we re-render the scene as a video. We
+      showcase four pre-defined trajectories: <em>arc-left</em>, <em>arc-right</em>, <em>zoom-in</em>,
+      and <em>zoom-out</em>, to demonstrate controllable viewpoint synthesis from a single image.
+    </p>
+    <div class="video-grid">
+      <video src="videos/camera_controlled_video_generations/06da796666297fe4c683c231edf56ec00148a6a52ab5bb159fe1be31f53a58df_clip0336_colmap_trajectory_comparison-9443.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/camera_controlled_video_generations/14eb48a50e37df548894ab6d8cd628a21dae14bbe6c462e894616fc5962e6c49_clip0436_colmap_trajectory_comparison-9527.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/camera_controlled_video_generations/493816813d2d6d248eb3c2b0b77b63e54235266e9a06e270fd0d282f13960493_clip0099_colmap_trajectory_comparison-9475.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/camera_controlled_video_generations/4ff8650b5c1140e98d957fbd1abbe2cfbbb416b37cb9f06f7f376956703801bb_clip0320_colmap_trajectory_comparison-9517.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/camera_controlled_video_generations/6d221625614d0515fa44d59a8797a49b64f86bc775e66be22f07a66aa0a0cb3a_clip0659_colmap_trajectory_comparison-9523.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/camera_controlled_video_generations/917e9c8985d353b0ee4c281f11fa84eb8550814562670cbb82cd0ec9c1194fe7_clip0733_colmap_trajectory_comparison-9531.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/camera_controlled_video_generations/9641a1ed7963ce5ca734cff3e6ccea3dfa8bcb0b0a3ff78f65d32a080de2d71e_clip0257_colmap_trajectory_comparison-9535.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/camera_controlled_video_generations/9641a1ed7963ce5ca734cff3e6ccea3dfa8bcb0b0a3ff78f65d32a080de2d71e_clip0675_colmap_trajectory_comparison-9502.mp4" preload="metadata" autoplay loop muted playsinline></video>
+    </div>
+  </section>
+
+  <!-- SECTION 4: ABLATION -->
+  <section class="block" id="ablation">
+    <h2>4. Ablation Study</h2>
+    <p>
+      We qualitatively compare our full model against three variants:
+      <em>without decoupled attention</em> (No Decoupled),
+      <em>without cosine-similarity loss</em> (No Cosine),
+      and a <em>Pl&uuml;cker-embedding</em> baseline (Pl&uuml;cker) in which rays are concatenated channel-wise
+      with video latents rather than represented as pixel-aligned raxels.
+      Quantitative metrics (FID / FVD / R<sub>err</sub> / T<sub>err</sub>) are reported in the paper.
+    </p>
+    <div class="video-grid">
+      <video src="videos/ablation_study_with_plucker/1ba74c22670ad047981441581d00f26f4a148d1010bcac7468c615adf5fa4d5d_set_8.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/ablation_study_with_plucker/3b7529dcccf7097cba31a989536035595e214b0f3775867fd3a62eb186870090_set_0.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/ablation_study_with_plucker/4ff8650b5c1140e98d957fbd1abbe2cfbbb416b37cb9f06f7f376956703801bb_set_9.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/ablation_study_with_plucker/374ffd0c5ff8e544f588f1da3ce0d5b69dc39ff3af95d7ccec480fe5e533c45e_set_5.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/ablation_study_with_plucker/9641a1ed7963ce5ca734cff3e6ccea3dfa8bcb0b0a3ff78f65d32a080de2d71e_set_6.mp4" preload="metadata" autoplay loop muted playsinline></video>
+      <video src="videos/ablation_study_with_plucker/b92b499c9bf92327d5f3a44c9db49bde3400dcb1cfec48d6488831e2b304d0bb_set_12.mp4" preload="metadata" autoplay loop muted playsinline></video>
+    </div>
+  </section>
+
+  <!-- BIBTEX -->
+  <section class="block" id="bibtex">
+    <h2>BibTeX</h2>
+<pre class="bibtex">@article{jang2026raysaspixels,
+  title   = {Rays as Pixels: Learning A Joint Distribution of Videos and Camera Trajectories},
+  author  = {Jang, Wonbong and Liu, Shikun and Sanyal, Soubhik and Perez, Juan Camilo and
+             Ng, Kam Woh and Agrawal, Sanskar and Perez-Rua, Juan-Manuel and
+             Douratsos, Yiannis and Xiang, Tao},
+  journal = {arXiv preprint arXiv:7465646},
+  year    = {2026}
+}</pre>
+  </section>
+
+</div>
+
+<footer>
+  &copy; 2026 Wonbong Jang.
+</footer>
 
 </body>
 </html>
