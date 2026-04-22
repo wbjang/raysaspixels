@@ -286,19 +286,20 @@
   <section class="block" id="abstract">
     <h2>Abstract</h2>
     <p>
-      Recovering camera parameters from images and rendering scenes from novel viewpoints have long been treated
+      Recovering camera parameters from images and rendering scenes from novel viewpoints have been treated
       as separate tasks in computer vision and graphics. This separation breaks down when image coverage is
-      sparse or poses are ambiguous, since each task needs what the other produces. We propose
+      sparse or poses are ambiguous, since each task depends on what the other produces. We propose
       <span class="method-name">Rays as Pixels</span>, a Video Diffusion Model (VDM) that learns a joint
-      distribution over videos and camera trajectories. We represent each camera as <em>dense ray pixels
-      (raxels)</em> and denoise them jointly with video frames through a <em>Decoupled Self-Cross Attention</em>
-      mechanism. A single trained model handles three tasks: predicting camera trajectories from video, jointly
-      generating video and camera trajectory from input images, and generating video from input images along a
-      target camera trajectory. Because the model can both predict trajectories from a video and generate views
-      conditioned on its own predictions, we evaluate it through a closed-loop self-consistency test,
-      demonstrating that its forward and inverse predictions agree. Notably, trajectory prediction requires far
-      fewer denoising steps than video generation, and even a few denoising steps suffice for
-      self-consistency. We report results on pose estimation and camera-controlled video generation.
+      distribution over videos and camera trajectories. To our knowledge, this is the first model to predict
+      camera poses and do camera-controlled video generation within a single framework. We represent each
+      camera as <em>dense ray pixels (raxels)</em>, a pixel-aligned encoding that lives in the same latent
+      space as video frames, and denoise the two jointly through a <em>Decoupled Self-Cross Attention</em>
+      mechanism. A single trained model handles three tasks: predicting camera trajectories from video,
+      generating video from input images along a pre-defined trajectory, and jointly synthesizing video and
+      trajectory from input images. We evaluate on pose estimation and camera-controlled video generation,
+      and demonstrate the model's self-consistency: its predicted poses and the renderings conditioned on
+      those poses agree. Ablations against Pl&uuml;cker embeddings confirm that representing cameras in a
+      shared latent space with video is substantially more effective.
     </p>
   </section>
 
